@@ -52,9 +52,8 @@
 //   console.log('Portfolio complete! Check out index.html to see the output');
 // });
 // console.log(inquirer);
-const inquirer = require('inquirer');
 const fs = require('fs');
-
+const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 
 const promptUser = () => {
@@ -185,10 +184,9 @@ promptUser()
   .then(promptProject)
   .then(portfolioData => {
     // console.log(portfolioData);
-    // will be uncommented in lesson 4
     const pageHTML = generatePage(portfolioData);
-    // fs.writeFile('./index.html', pageHTML, err => {
-    //   if (err) throw new Error(err);
-    //   // console.log('Page created! Check out index.html in this directory to see it!');
-    // });
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw new Error(err);
+      console.log('Page created! Check out index.html in this directory to see it!');
+    });
   });
